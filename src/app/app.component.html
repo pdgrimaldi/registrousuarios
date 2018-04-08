@@ -7,25 +7,30 @@
         <div class="pt-2">
           <div class="box">
             <div class="col-md-8">
-              <input id="fname" name="name" type="text" [(ngModel)]="model.first_name" placeholder="Nombre" class="form-control">
+              <h6 class="mb-0">Nombre(*):</h6>
+              <input id="fname" name="name" type="text" [(ngModel)]="model.first_name" placeholder="Ingrese su nombre" class="form-control">
             </div>
           </div>
           <div class="box">
             <div class="col-md-8">
-              <input id="lname" name="name" type="text" [(ngModel)]="model.last_name" placeholder="Apellido" class="form-control">
+              <h6 class="mb-0">Apellido(*):</h6>
+              <input id="lname" name="name" type="text" [(ngModel)]="model.last_name" placeholder="Ingrese su apellido" class="form-control">
             </div>
           </div>
           <div class="box">
             <div class="col-md-8">
-              <input id="phone" name="phone" type="text" [(ngModel)]="model.phone" placeholder="Telefono" class="form-control"> 
+              <h6 class="mb-0">Teléfono(*):</h6>
+              <input id="phone" #phone="ngModel" pattern="[0-9]*" minlength="10" maxlength="10" name="phone" type="text" [(ngModel)]="model.phone" placeholder="Ingrese su teléfono" class="form-control">
             </div>
-            <div class="col-md-8 rednote">(código de area sin el 0 + numero de teléfono sin el 15)</div>
+            <div class="col-md-8 rednote">(código de area sin el 0 + numero de teléfono sin el 15)
+              <hr>
+            </div>
           </div>
-          <div class="col-md-8 mt-2">
-            <h5>Deseo suscribirme a los siguientes canales:</h5>
+          <div class="col-md-8 mt-4">
+            <h5>Deseo suscribirme a los siguientes canales(*):</h5>
             <button type="button" (click)="checkAll()" class="asButton btn-sm btn-primary">Todos</button>
             <button type="button" (click)="uncheckAll()" class="asButton btn-sm btn-primary">Ninguno</button>
-            <ul class="pl-0 pt-3">
+            <ul class="pl-0 pt-2">
               <li *ngFor="let interest of interests; let i = index">
                 <input type="checkbox" value="{{interest}}" name="{{interest}}" [checked]="model.interests.indexOf(interest) > -1? 'checked' : ''"
                   (change)="updateSelectedInterests($event)"> {{interest}}
@@ -34,7 +39,7 @@
           </div>
           <div>
             <div class="col-md-8 text-right">
-              <button type="button" (click)="subscribe()" class="btn btn-primary btn-lg">Suscribirse</button>
+              <button [disabled]="!validToSubmit()" type="button" (click)="subscribe()" class="btn btn-primary btn-lg">Suscribirse</button>
             </div>
           </div>
         </div>

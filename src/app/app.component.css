@@ -10,7 +10,7 @@
 }
 
 .box{
-	height: 4em;
+	height: 5em;
 }
 
 .asButton{
@@ -25,4 +25,8 @@ ul {
 	color:red;
 	font-size: 10px;
 	font-weight: bold;
+}
+
+[disabled]{
+	cursor: not-allowed;
 }
