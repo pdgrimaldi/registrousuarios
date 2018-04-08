@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
         this.model.last_name = '';
         this.model.phone = '';
         this.model.interests = [];
-        //this.loading = false;
+        this.loading = false;
       },
       error => {
         this.toastr.error('En este momento no se puede suscribir. Intente mas tarde', 'Atención!');
