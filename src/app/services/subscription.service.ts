@@ -27,7 +27,7 @@ export class SubscriptionService {
       params = {
         'first_name': model.first_name,
         'last_name': model.last_name,
-        'phone': model.phone,
+        'phone': '549' + model.phone,
         'interests': model.interests
       };
 
