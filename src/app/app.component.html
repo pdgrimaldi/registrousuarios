@@ -1,20 +1,47 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="row">
+    <div class="offset-md-3 col-md-8">
+      <div class="well well-sm">
+        <fieldset>
+          <legend class="header pb-0">Suscripción</legend>
+          <div class="pt-2">
+          <div class="box">
+            <div class="col-md-8">
+              <input id="fname" name="name" type="text" [(ngModel)]="model.first_name" placeholder="Nombre" class="form-control">
+            </div>
+          </div>
+          <div class="box">
+            <div class="col-md-8">
+              <input id="lname" name="name" type="text" [(ngModel)]="model.last_name" placeholder="Apellido" class="form-control">
+            </div>
+          </div>
+          <div class="box">
+            <div class="col-md-8">
+              <input id="phone" name="phone" type="text" [(ngModel)]="model.phone" placeholder="Telefono" class="form-control">
+            </div>
+          </div>
+          <div>
+            <div class="col-md-8">
+              <h5>Deseo suscribirme a los siguientes canales:</h5>
+              <button type="button" (click)="checkAll()" class="asButton btn-sm btn-primary">Todos</button>
+              <button type="button" (click)="uncheckAll()" class="asButton btn-sm btn-primary">Ninguno</button>
+              <ul class="pl-0 pt-3">
+                <li *ngFor="let interest of interests; let i = index">
+                  <input type="checkbox" value="{{interest}}" name="{{interest}}" [checked]="model.interests.indexOf(interest) > -1? 'checked' : ''"
+                    (change)="updateSelectedInterests($event)"> {{interest}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="col-md-8 text-right">
+              <button type="button" (click)="subscribe()" class="btn btn-primary btn-lg">Suscribirse</button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
