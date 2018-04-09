@@ -30,7 +30,7 @@ export class AppComponent {
     'Alerta meteorológico',
     'Alerta de cortes',
     'Eventos Culturales',
-    'Estado tránsito autopista BS-LP',
+    'Estado tránsito autopista',
     'Vencimiento de impuestos municipales'
   ];
 
