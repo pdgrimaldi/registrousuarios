@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingModule } from 'ngx-loading';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 
@@ -29,7 +30,8 @@ import { SubscriptionService } from './services/subscription.service';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    LoadingModule
+    LoadingModule,
+    NgbModule.forRoot()
   ],
   providers: [SubscriptionService],
   bootstrap: [AppComponent]

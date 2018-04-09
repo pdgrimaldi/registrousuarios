@@ -22,12 +22,12 @@ export class SubscriptionService {
     };
     let params;
     if (environment.useJsons) {
-      return Observable.of('');
+      return Observable.of({ sent: true });
     } else {
       params = {
         'first_name': model.first_name,
         'last_name': model.last_name,
-        'phone': '549' + model.phone,
+        'phone': model.phone,
         'interests': model.interests
       };
 

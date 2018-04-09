@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { FormControl, Validators, EmailValidator } from '@angular/forms';
 import { SubscriptionService } from './services/subscription.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   public loading = false;
   @ViewChild('phone')
   phone: any;
-
+  countryZip = '549';
   model = {
     first_name: '',
     last_name: '',
@@ -32,7 +33,9 @@ export class AppComponent {
     'Estado tránsito autopista BS-LP',
     'Vencimiento de impuestos municipales'
   ];
-  constructor(private subscriptionService: SubscriptionService, private toastr: ToastrService) { }
+
+  constructor(private subscriptionService: SubscriptionService, private toastr: ToastrService, private modalService: NgbModal
+    , private renderer: Renderer2) { }
 
   checkAll() {
     this.model.interests = JSON.parse(JSON.stringify(this.interests));
@@ -61,6 +64,19 @@ export class AppComponent {
       this.model.interests.length > 0;
   }
 
+  cleanPhone() {
+    this.model.phone = '';
+  }
+
+  confirmPhone(content) {
+    this.modalService.open(content);
+  }
+
+  focusPhoneInput() {
+    const onElement = this.renderer.selectRootElement('#phone');
+    onElement.focus();
+  }
+
   subscribe() {
     this.loading = true;
     this.subscriptionService.subscribe(this.model).subscribe(
@@ -75,9 +91,8 @@ export class AppComponent {
           this.loading = false;
         } else {
           this.toastr.error('El número de teléfono inrgesado no es correcto. Por favor verifíquelo', 'Atención!');
-          
-          this.phone.nativeElement.focus();
           this.loading = false;
+          this.focusPhoneInput();
         }
       },
       error => {
