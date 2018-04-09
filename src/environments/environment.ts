@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  useJsons: false,
+  useJsons: true,
   servicesUrl: {
-    subscribe: 'https://wappsender-api.herokuapp.com/api/registration'
+    subscribe: '/'
   }
 };
