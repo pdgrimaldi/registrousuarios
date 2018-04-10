@@ -79,6 +79,7 @@ export class AppComponent {
 
   subscribe() {
     this.loading = true;
+    this.model.phone = this.countryZip + this.model.phone;
     this.subscriptionService.subscribe(this.model).subscribe(
       response => {
         if (response.sent) {
